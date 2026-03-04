@@ -10,7 +10,7 @@ const Reviews = () => {
     useEffect(() => {
         const fetchFeedback = async () => {
             try {
-                const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/feedback?limit=30`);
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/feedback?limit=30`);
                 setFeedbacks(res.data.feedbacks);
             } catch (error) {
                 console.error("Error fetching feedback", error);

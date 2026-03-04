@@ -1,13 +1,63 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from './AuthContext';
-import { Menu, X, HeartPulse, LayoutDashboard, LogOut, LogIn, UserPlus } from 'lucide-react';
+import {
+    Menu, X, HeartPulse, LayoutDashboard, LogOut, LogIn, UserPlus,
+    ChevronDown, Hospital, Stethoscope, Users, BookOpen, Shield,
+    Fingerprint, Map, Phone, Star, Info, MessageSquare, AlarmCheck
+} from 'lucide-react';
 
+// ─── Dropdown Menu Component ───────────────────────────────────────────────────
+const DropdownMenu = ({ label, items, isActive }) => {
+    const [open, setOpen] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    }, []);
+
+    return (
+        <div ref={ref} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+            <button
+                onClick={() => setOpen(!open)}
+                className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${isActive ? 'text-teal-400 bg-teal-500/10 border border-teal-500/20' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    }`}
+            >
+                {label}
+                <ChevronDown size={14} className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+            </button>
+
+            {open && (
+                <div className="absolute top-full left-0 mt-1 w-60 py-2 bg-gray-950/95 border border-white/10 rounded-2xl shadow-2xl shadow-black/50 backdrop-blur-xl z-[100] animate-in fade-in slide-in-from-top-2">
+                    {items.map((item) => (
+                        <Link
+                            key={item.path}
+                            to={item.path}
+                            onClick={() => setOpen(false)}
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors group"
+                        >
+                            <span className="text-teal-400/70 group-hover:text-teal-400 transition-colors">{item.icon}</span>
+                            <div>
+                                <p className="font-medium leading-none mb-0.5">{item.name}</p>
+                                {item.desc && <p className="text-xs text-gray-600 group-hover:text-gray-500 leading-none">{item.desc}</p>}
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+// ─── Main Navbar ────────────────────────────────────────────────────────────────
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
+    const [mobileSection, setMobileSection] = useState(null);
 
     const handleLogout = () => {
         logout();
@@ -15,27 +65,44 @@ const Navbar = () => {
         setIsOpen(false);
     };
 
-    const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'Hospitals', path: '/hospitals' },
-        { name: 'Doctors', path: '/doctors' },
-        { name: 'Mentors', path: '/mentor-community' },
-        { name: 'Records', path: '/health-records' },
-        { name: 'Academy', path: '/education' },
-        { name: 'Reviews', path: '/reviews' },
-        { name: 'Chat', path: '/chat' },
-        { name: 'About', path: '/about' },
+    const isActive = (...paths) => paths.some(p => location.pathname === p || location.pathname.startsWith(p + '/'));
+
+    // ─── Nav Group Definitions ─────────────────────────────────────────────────
+    const careItems = [
+        { name: 'Hospitals', path: '/hospitals', icon: <Hospital size={16} />, desc: 'Find & book top hospitals' },
+        { name: 'Doctors', path: '/doctors', icon: <Stethoscope size={16} />, desc: 'Connect with specialists' },
+        { name: 'TeleConsult', path: '/teleconsult', icon: <AlarmCheck size={16} />, desc: 'Video consultations' },
+        { name: 'Mentor Community', path: '/mentor-community', icon: <Users size={16} />, desc: 'Mother-to-mother support' },
     ];
 
-    const isActive = (path) => location.pathname === path;
+    const healthItems = [
+        { name: 'Health Dashboard', path: '/health-dashboard', icon: <LayoutDashboard size={16} />, desc: 'Pregnancy tracking & vitals' },
+        { name: 'Health Records', path: '/health-records', icon: <BookOpen size={16} />, desc: 'Digital medical history' },
+        { name: 'Baby Dashboard', path: '/baby-dashboard', icon: <HeartPulse size={16} />, desc: 'Track baby milestones' },
+        { name: 'Health Passport', path: '/passport', icon: <Fingerprint size={16} />, desc: 'Portable medical identity' },
+        { name: 'Insurance', path: '/insurance', icon: <Shield size={16} />, desc: 'Manage your policies' },
+    ];
+
+    const guideItems = [
+        { name: 'Health Navigation', path: '/navigation', icon: <Map size={16} />, desc: 'Step-by-step health journeys' },
+        { name: 'Education', path: '/education', icon: <BookOpen size={16} />, desc: 'Maternal health learning' },
+        { name: 'Govt Schemes', path: '/schemes', icon: <Star size={16} />, desc: 'Welfare programs & benefits' },
+        { name: 'Forum', path: '/forum', icon: <MessageSquare size={16} />, desc: 'Community discussions' },
+    ];
+
+    const mobileAllLinks = [
+        { section: 'Care', items: careItems },
+        { section: 'My Health', items: healthItems },
+        { section: 'Explore', items: guideItems },
+    ];
 
     return (
-        <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl">
+        <nav className="sticky top-0 z-50 border-b border-white/[0.07] bg-black/60 backdrop-blur-2xl">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16 items-center">
+                <div className="flex justify-between h-16 items-center gap-4">
 
-                    {/* Logo */}
-                    <Link to="/" className="flex items-center gap-2.5 group">
+                    {/* ── Logo ──────────────────────────────────────────── */}
+                    <Link to="/" className="flex items-center gap-2.5 group shrink-0">
                         <div className="bg-teal-500/20 p-2 rounded-xl border border-teal-500/30 group-hover:bg-teal-500/30 transition-colors">
                             <HeartPulse className="h-5 w-5 text-teal-400" />
                         </div>
@@ -44,75 +111,132 @@ const Navbar = () => {
                         </span>
                     </Link>
 
-                    {/* Desktop Links */}
-                    <div className="hidden md:flex items-center gap-1">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.path}
-                                to={link.path}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${isActive(link.path)
-                                    ? 'text-teal-400 bg-teal-500/10 border border-teal-500/20'
-                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                                    }`}
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+                    {/* ── Desktop Nav ───────────────────────────────────── */}
+                    <div className="hidden lg:flex items-center gap-0.5">
+                        <Link
+                            to="/"
+                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${isActive('/') && location.pathname === '/' ? 'text-teal-400 bg-teal-500/10 border border-teal-500/20' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                }`}
+                        >
+                            Home
+                        </Link>
+
+                        <DropdownMenu
+                            label="Care"
+                            items={careItems}
+                            isActive={isActive('/hospitals', '/doctors', '/teleconsult', '/mentor-community')}
+                        />
+                        <DropdownMenu
+                            label="My Health"
+                            items={healthItems}
+                            isActive={isActive('/health-dashboard', '/health-records', '/baby-dashboard', '/passport', '/insurance')}
+                        />
+                        <DropdownMenu
+                            label="Explore"
+                            items={guideItems}
+                            isActive={isActive('/navigation', '/education', '/schemes', '/forum')}
+                        />
+
+                        <Link
+                            to="/reviews"
+                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${isActive('/reviews') ? 'text-teal-400 bg-teal-500/10 border border-teal-500/20' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                }`}
+                        >
+                            Reviews
+                        </Link>
+                        <Link
+                            to="/contact"
+                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${isActive('/contact') ? 'text-teal-400 bg-teal-500/10 border border-teal-500/20' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                }`}
+                        >
+                            Contact
+                        </Link>
                     </div>
 
-                    {/* Desktop Auth */}
-                    <div className="hidden md:flex items-center gap-3">
+                    {/* ── Desktop Auth ──────────────────────────────────── */}
+                    <div className="hidden lg:flex items-center gap-2 shrink-0">
                         {user ? (
                             <>
+                                <span className="text-xs text-gray-500 border border-white/10 px-2 py-1 rounded-full hidden xl:block">
+                                    {user.name?.split(' ')[0]}
+                                </span>
                                 <Link
                                     to={`/dashboard/${user.role.toLowerCase()}`}
-                                    className="flex items-center gap-2 border border-teal-500/30 text-teal-400 hover:bg-teal-500/10 px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+                                    className="flex items-center gap-1.5 border border-teal-500/30 text-teal-400 hover:bg-teal-500/10 px-3 py-2 rounded-lg text-sm font-semibold transition-all"
                                 >
-                                    <LayoutDashboard size={15} /> Dashboard
+                                    <LayoutDashboard size={14} /> Dashboard
                                 </Link>
                                 <button
                                     onClick={handleLogout}
-                                    className="flex items-center gap-2 text-gray-400 hover:text-red-400 text-sm font-medium transition-colors px-3 py-2 rounded-lg hover:bg-red-500/10"
+                                    className="flex items-center gap-1.5 text-gray-400 hover:text-red-400 text-sm font-medium transition-colors px-3 py-2 rounded-lg hover:bg-red-500/10"
                                 >
-                                    <LogOut size={15} /> Logout
+                                    <LogOut size={14} /> Logout
                                 </button>
                             </>
                         ) : (
                             <>
-                                <Link to="/login" className="flex items-center gap-2 text-gray-400 hover:text-white text-sm font-medium transition-colors px-4 py-2 rounded-lg hover:bg-white/5">
-                                    <LogIn size={15} /> Login
+                                <Link to="/login" className="flex items-center gap-1.5 text-gray-400 hover:text-white text-sm font-medium transition-colors px-3 py-2 rounded-lg hover:bg-white/5">
+                                    <LogIn size={14} /> Login
                                 </Link>
-                                <Link to="/register" className="flex items-center gap-2 bg-teal-600 hover:bg-teal-500 text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg shadow-teal-500/20 transition-all">
-                                    <UserPlus size={15} /> Register
+                                <Link to="/register" className="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg shadow-teal-500/20 transition-all">
+                                    <UserPlus size={14} /> Register
                                 </Link>
                             </>
                         )}
                     </div>
 
-                    {/* Mobile Toggle */}
-                    <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-gray-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    {/* ── Mobile Toggle ─────────────────────────────────── */}
+                    <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-gray-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
                         {isOpen ? <X size={22} /> : <Menu size={22} />}
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* ─── Mobile Menu ──────────────────────────────────────────────── */}
             {isOpen && (
-                <div className="md:hidden border-t border-white/10 bg-black/60 backdrop-blur-xl">
+                <div className="lg:hidden border-t border-white/[0.07] bg-black/80 backdrop-blur-2xl max-h-[80vh] overflow-y-auto">
                     <div className="px-4 py-4 space-y-1">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.path}
-                                to={link.path}
-                                onClick={() => setIsOpen(false)}
-                                className={`block px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${isActive(link.path)
-                                    ? 'text-teal-400 bg-teal-500/10'
-                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                                    }`}
-                            >
-                                {link.name}
-                            </Link>
+
+                        {/* Home */}
+                        <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
+                            Home
+                        </Link>
+
+                        {/* Grouped sections */}
+                        {mobileAllLinks.map(({ section, items }) => (
+                            <div key={section}>
+                                <button
+                                    onClick={() => setMobileSection(mobileSection === section ? null : section)}
+                                    className="flex items-center justify-between w-full px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5 transition-colors"
+                                >
+                                    {section}
+                                    <ChevronDown size={14} className={`transition-transform ${mobileSection === section ? 'rotate-180' : ''}`} />
+                                </button>
+                                {mobileSection === section && (
+                                    <div className="ml-4 mt-1 space-y-1 border-l border-white/10 pl-3">
+                                        {items.map(item => (
+                                            <Link
+                                                key={item.path}
+                                                to={item.path}
+                                                onClick={() => { setIsOpen(false); setMobileSection(null); }}
+                                                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                                            >
+                                                <span className="text-teal-400">{item.icon}</span>{item.name}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         ))}
+
+                        <Link to="/reviews" onClick={() => setIsOpen(false)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
+                            <Star size={16} className="text-teal-400" /> Reviews
+                        </Link>
+                        <Link to="/contact" onClick={() => setIsOpen(false)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
+                            <Phone size={16} className="text-teal-400" /> Contact
+                        </Link>
+
+                        {/* Auth */}
                         <div className="pt-3 border-t border-white/10 space-y-2">
                             {user ? (
                                 <>
@@ -128,7 +252,7 @@ const Navbar = () => {
                                     <Link to="/login" onClick={() => setIsOpen(false)} className="text-center px-4 py-2.5 border border-teal-500/30 text-teal-400 rounded-xl text-sm font-semibold hover:bg-teal-500/10 transition-colors">
                                         Login
                                     </Link>
-                                    <Link to="/register" onClick={() => setIsOpen(false)} className="text-center px-4 py-2.5 bg-teal-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-teal-500/20 transition-all">
+                                    <Link to="/register" onClick={() => setIsOpen(false)} className="text-center px-4 py-2.5 bg-teal-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-teal-500/20">
                                         Register
                                     </Link>
                                 </div>

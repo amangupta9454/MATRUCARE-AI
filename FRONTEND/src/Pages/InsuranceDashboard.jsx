@@ -16,7 +16,7 @@ const InsuranceDashboard = () => {
     const fetchPolicies = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/insurance`, {
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/insurance`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setPolicies(res.data.policies);
@@ -35,7 +35,7 @@ const InsuranceDashboard = () => {
         setSubmitting(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/insurance`, formData, {
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/insurance`, formData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setPolicies([...policies, res.data.policy]);
@@ -52,7 +52,7 @@ const InsuranceDashboard = () => {
         if (!window.confirm('Are you sure you want to remove this policy?')) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`${import.meta.env.VITE_API_URL}/api/insurance/${id}`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/insurance/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setPolicies(policies.filter(p => p._id !== id));
