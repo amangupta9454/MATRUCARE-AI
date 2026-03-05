@@ -1,153 +1,231 @@
-# MaaCare — Maternal Healthcare Platform
+<h1 style="color:#d63384;">🤱 MaaCare — Maternal Healthcare Platform</h1>
 
-A full-stack web application that connects mothers, doctors, hospitals, and ASHA workers across India. Built with React on the frontend and Node.js on the backend, it covers everything from pregnancy tracking and teleconsultation to hospital booking with insurance integration, an emergency SOS system, and a portable Digital Health Passport.
+<p>
+A full-stack web application that connects mothers, doctors, hospitals, and ASHA workers across India.
+Built with <b>React</b> on the frontend and <b>Node.js</b> on the backend, it covers everything from pregnancy tracking
+and teleconsultation to hospital booking with insurance integration, an emergency SOS system,
+and a portable <b>Digital Health Passport</b>.
+</p>
 
----
+<hr>
 
-## Table of Contents
+<h2 style="color:#6f42c1;">📑 Table of Contents</h2>
 
-- [What is MaaCare](#what-is-maacare)
-- [Who it's for](#who-its-for)
-- [What problems it solves](#what-problems-it-solves)
-- [Features by module](#features-by-module)
-- [Project structure](#project-structure)
-- [Tech stack](#tech-stack)
-- [How to run the project locally](#how-to-run-the-project-locally)
-- [Environment variables](#environment-variables)
-- [All API routes (summary)](#all-api-routes-summary)
-- [User roles and permissions](#user-roles-and-permissions)
-- [How each major feature works](#how-each-major-feature-works)
-- [Deployment](#deployment)
-- [Package dependencies](#package-dependencies)
-- [Available scripts](#available-scripts)
-- [Contact](#contact)
+<ul>
+<li>🔎 <a href="#what-is-maacare">What is MaaCare</a></li>
+<li>👩‍👧 <a href="#who-its-for">Who it's for</a></li>
+<li>⚕️ <a href="#what-problems-it-solves">What problems it solves</a></li>
+<li>✨ <a href="#features-by-module">Features by module</a></li>
+<li>📂 <a href="#project-structure">Project structure</a></li>
+<li>💻 <a href="#tech-stack">Tech stack</a></li>
+<li>⚙️ <a href="#how-to-run-the-project-locally">How to run the project locally</a></li>
+<li>🔑 <a href="#environment-variables">Environment variables</a></li>
+<li>🌐 <a href="#all-api-routes-summary">All API routes (summary)</a></li>
+<li>👥 <a href="#user-roles-and-permissions">User roles and permissions</a></li>
+<li>🧠 <a href="#how-each-major-feature-works">How each major feature works</a></li>
+<li>🚀 <a href="#deployment">Deployment</a></li>
+<li>📦 <a href="#package-dependencies">Package dependencies</a></li>
+<li>📜 <a href="#available-scripts">Available scripts</a></li>
+<li>📬 <a href="#contact">Contact</a></li>
+</ul>
 
----
+<hr>
 
-## What is MaaCare
 
-MaaCare is a healthcare platform designed specifically around maternal and child health in India. The platform brings together multiple stakeholders — pregnant mothers, specialist doctors, ASHA (Accredited Social Health Activist) workers, hospitals, and administrators — into one connected system.
+<h2 id="what-is-maacare" style="color:#198754;">🩺 What is MaaCare</h2>
 
-A mother can use MaaCare to:
-- Track her pregnancy week by week
-- Book an appointment with a gynecologist
-- Join a video teleconsultation from home
-- Find the nearest hospital and book a service
-- Apply her insurance policy at the time of booking
-- Generate a Digital Health Passport with a QR code (for emergencies)
-- Trigger an SOS alert that captures her location and emails her emergency contacts
-- Track her baby's milestones and vaccination schedule
-- Get step-by-step guidance for health conditions like anemia or gestational diabetes
+<p>
+MaaCare is a healthcare platform designed specifically around maternal and child health in India.
+The platform brings together multiple stakeholders — pregnant mothers, specialist doctors,
+ASHA (Accredited Social Health Activist) workers, hospitals, and administrators — into one connected system.
+</p>
 
----
+<p><b>A mother can use MaaCare to:</b></p>
 
-## Who It's For
+<ul>
+<li>📅 Track her pregnancy week by week</li>
+<li>👩‍⚕️ Book an appointment with a gynecologist</li>
+<li>💻 Join a video teleconsultation from home</li>
+<li>🏥 Find the nearest hospital and book a service</li>
+<li>🛡️ Apply her insurance policy at the time of booking</li>
+<li>📇 Generate a Digital Health Passport with a QR code (for emergencies)</li>
+<li>🚨 Trigger an SOS alert that captures her location and emails her emergency contacts</li>
+<li>👶 Track her baby's milestones and vaccination schedule</li>
+<li>📖 Get step-by-step guidance for health conditions like anemia or gestational diabetes</li>
+</ul>
 
-| Role | What they use MaaCare for |
-|------|--------------------------|
-| Mother | Pregnancy tracking, doctor booking, hospital booking, insurance, SOS, health records |
-| Doctor | Managing appointments, teleconsultation, viewing patient records |
-| ASHA Worker | Tracking assigned mothers, scheduling visits, checking government schemes |
-| Hospital | Registering services, managing bookings and bed counts, approving/rejecting bookings |
-| Admin | Viewing platform analytics and insights, managing all users |
+<hr>
 
----
+<h2 id="who-its-for" style="color:#fd7e14;">👥 Who It's For</h2>
 
-## What Problems It Solves
+<table style="border-collapse: collapse; width:100%; text-align:left;">
+<thead>
+<tr style="background-color:#f8f9fa;">
+<th style="border:1px solid #ddd; padding:10px;">Role</th>
+<th style="border:1px solid #ddd; padding:10px;">What they use MaaCare for</th>
+</tr>
+</thead>
 
-1. Rural mothers cannot easily access specialist doctors → solved by teleconsultation
-2. No centralized pregnancy tracking tool → solved by the pregnancy and baby dashboards
-3. Insurance complications at hospitals → solved by insurance integration in the booking form
-4. No portable medical identity → solved by the Digital Health Passport and QR code
-5. No way to quickly alert family/doctor in a high-risk emergency → solved by the SOS panel
-6. Information scattered across different government portals → solved by the schemes directory
-7. Language barrier between patients and doctors → solved by multilingual real-time chat
+<tbody>
 
----
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">🤱 Mother</td>
+<td style="border:1px solid #ddd; padding:10px;">
+Pregnancy tracking, doctor booking, hospital booking, insurance, SOS, health records
+</td>
+</tr>
 
-## Features by Module
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">👨‍⚕️ Doctor</td>
+<td style="border:1px solid #ddd; padding:10px;">
+Managing appointments, teleconsultation, viewing patient records
+</td>
+</tr>
 
-### Module 1 — Authentication
-- Registration with role selection (Mother, Doctor, ASHA Worker, Hospital, Admin)
-- OTP email verification before first login
-- JWT-based sessions (tokens stored in localStorage)
-- Forgot password and reset via OTP
-- Role-based access control on all protected routes
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">🧑‍⚕️ ASHA Worker</td>
+<td style="border:1px solid #ddd; padding:10px;">
+Tracking assigned mothers, scheduling visits, checking government schemes
+</td>
+</tr>
 
-### Module 2 — Pregnancy Tracking
-- Pregnancy profile: due date, weeks pregnant, trimester, blood pressure, weight
-- Risk level assessment
-- Kick counter and contraction timer
-- Appointment booking with doctors
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">🏥 Hospital</td>
+<td style="border:1px solid #ddd; padding:10px;">
+Registering services, managing bookings and bed counts, approving/rejecting bookings
+</td>
+</tr>
 
-### Module 3 — Doctors
-- Browse doctors by specialty (Gynecologist, Pediatrician, Cardiologist, etc.)
-- Doctor profile pages with qualifications, experience, and availability
-- Availability calendar
-- Rating and review system
-- AI-based doctor recommendations by condition
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">🛠️ Admin</td>
+<td style="border:1px solid #ddd; padding:10px;">
+Viewing platform analytics and insights, managing all users
+</td>
+</tr>
 
-### Module 4 — ASHA Workers
-- Dashboard for assigned mothers and upcoming visits
-- Visit scheduling and checklist management
-- Government scheme lookup and eligibility check
-- ANC (Antenatal Care) visit tracking
+</tbody>
+</table>
 
-### Module 5 — Baby Dashboard
-- Baby profile: name, birth date, weight, blood group
-- Milestone tracker
-- Vaccination schedule with due dates and completion tracking
-- Growth chart (weight and height over time)
+<hr>
 
-### Module 6 — Community
-- Forum for Q&A discussions among mothers and caregivers
-- Doctor reviews and ratings
-- AI-recommended doctors based on health condition
+<h2 id="what-problems-it-solves" style="color:#dc3545;">⚠️ What Problems It Solves</h2>
 
-### Module 7 — Wellness
-- Personalized daily diet plan based on pregnancy stage
-- Gamified maternal health quiz
-- Real-time multilingual chat (auto-translates messages)
-- Platform feedback and star ratings
+<ol style="line-height:1.8;">
+<li>🌾 Rural mothers cannot easily access specialist doctors → solved by <b>teleconsultation</b></li>
+<li>📊 No centralized pregnancy tracking tool → solved by the <b>pregnancy and baby dashboards</b></li>
+<li>🛡️ Insurance complications at hospitals → solved by <b>insurance integration in the booking form</b></li>
+<li>🪪 No portable medical identity → solved by the <b>Digital Health Passport and QR code</b></li>
+<li>🚨 No way to quickly alert family/doctor in a high-risk emergency → solved by the <b>SOS panel</b></li>
+<li>📑 Information scattered across different government portals → solved by the <b>schemes directory</b></li>
+<li>🌍 Language barrier between patients and doctors → solved by <b>multilingual real-time chat</b></li>
+</ol>
 
-### Module 8 — Hospitals
-- Hospital directory with specialties, contact, and rating
-- Real-time bed availability per ward type
-- Hospital services listing with prices
-- Booking a hospital service (with insurance integration)
-- Booking approval/rejection by hospital admin
-- Mentor mothers program (experienced mothers support new ones)
-- Digital health records upload and storage (with Cloudinary)
+<hr>
 
-### New Features
-- **Insurance Management** — Add policies, view coverage, check if a hospital is in-network, apply at booking
-- **Digital Health Passport** — A scannable QR code containing blood type, allergies, conditions, emergency contacts
-- **Health Navigation Assistant** — Enter a condition (anemia, hypertension, etc.) and get a step-by-step care journey
-- **Emergency SOS** — One-tap button that captures GPS location and emails your doctor, family, and ASHA worker
+<h2 id="features-by-module" style="color:#6f42c1;">✨ Features by Module</h2>
 
----
+<h3 style="color:#0d6efd;">🔐 Module 1 — Authentication</h3>
+<ul>
+<li>Registration with role selection (Mother, Doctor, ASHA Worker, Hospital, Admin)</li>
+<li>OTP email verification before first login</li>
+<li>JWT-based sessions (tokens stored in localStorage)</li>
+<li>Forgot password and reset via OTP</li>
+<li>Role-based access control on all protected routes</li>
+</ul>
+
+<h3 style="color:#0d6efd;">🤰 Module 2 — Pregnancy Tracking</h3>
+<ul>
+<li>Pregnancy profile: due date, weeks pregnant, trimester, blood pressure, weight</li>
+<li>Risk level assessment</li>
+<li>Kick counter and contraction timer</li>
+<li>Appointment booking with doctors</li>
+</ul>
+
+<h3 style="color:#0d6efd;">👨‍⚕️ Module 3 — Doctors</h3>
+<ul>
+<li>Browse doctors by specialty (Gynecologist, Pediatrician, Cardiologist, etc.)</li>
+<li>Doctor profile pages with qualifications, experience, and availability</li>
+<li>Availability calendar</li>
+<li>Rating and review system</li>
+<li>AI-based doctor recommendations by condition</li>
+</ul>
+
+<h3 style="color:#0d6efd;">🧑‍⚕️ Module 4 — ASHA Workers</h3>
+<ul>
+<li>Dashboard for assigned mothers and upcoming visits</li>
+<li>Visit scheduling and checklist management</li>
+<li>Government scheme lookup and eligibility check</li>
+<li>ANC (Antenatal Care) visit tracking</li>
+</ul>
+
+<h3 style="color:#0d6efd;">👶 Module 5 — Baby Dashboard</h3>
+<ul>
+<li>Baby profile: name, birth date, weight, blood group</li>
+<li>Milestone tracker</li>
+<li>Vaccination schedule with due dates and completion tracking</li>
+<li>Growth chart (weight and height over time)</li>
+</ul>
+
+<h3 style="color:#0d6efd;">💬 Module 6 — Community</h3>
+<ul>
+<li>Forum for Q&A discussions among mothers and caregivers</li>
+<li>Doctor reviews and ratings</li>
+<li>AI-recommended doctors based on health condition</li>
+</ul>
+
+<h3 style="color:#0d6efd;">🌿 Module 7 — Wellness</h3>
+<ul>
+<li>Personalized daily diet plan based on pregnancy stage</li>
+<li>Gamified maternal health quiz</li>
+<li>Real-time multilingual chat (auto-translates messages)</li>
+<li>Platform feedback and star ratings</li>
+</ul>
+
+<h3 style="color:#0d6efd;">🏥 Module 8 — Hospitals</h3>
+<ul>
+<li>Hospital directory with specialties, contact, and rating</li>
+<li>Real-time bed availability per ward type</li>
+<li>Hospital services listing with prices</li>
+<li>Booking a hospital service (with insurance integration)</li>
+<li>Booking approval/rejection by hospital admin</li>
+<li>Mentor mothers program (experienced mothers support new ones)</li>
+<li>Digital health records upload and storage (with Cloudinary)</li>
+</ul>
+
+<hr>
+
+<h2 style="color:#198754;">🚀 New Features</h2>
+
+<ul>
+<li><b>🛡️ Insurance Management</b> — Add policies, view coverage, check if a hospital is in-network, apply at booking</li>
+
+<li><b>📇 Digital Health Passport</b> — A scannable QR code containing blood type, allergies, conditions, emergency contacts</li>
+
+<li><b>🧭 Health Navigation Assistant</b> — Enter a condition (anemia, hypertension, etc.) and get a step-by-step care journey</li>
+
+<li><b>🚨 Emergency SOS</b> — One-tap button that captures GPS location and emails your doctor, family, and ASHA worker</li>
+</ul>
 
 ## Project Structure
-
-```
+<pre>
 MATRUCARE/
 │
 ├── README.md                 ← This file
 ├── LICENSE                   ← Project license
 │
-├── BACKEND/                  ← Node.js + Express REST API server
-│   ├── .env                  ← Private configuration (never commit this)
+├── BACKEND/
+│   ├── .env
 │   ├── .gitignore
-│   ├── index.js              ← Server entry: connects DB, starts Socket.IO, mounts routes
-│   ├── initAdmin.js          ← One-time script to seed the first admin account
+│   ├── index.js
+│   ├── initAdmin.js
 │   ├── package.json
 │   │
-│   ├── config/               ← Shared config setup
-│   │   ├── db.js             ← MongoDB connection using MONGO_URI
-│   │   ├── nodemailer.js     ← Email transporter using EMAIL_USER and EMAIL_PASS
-│   │   └── cloudinary.js     ← Cloudinary SDK setup for file uploads
+│   ├── config/
+│   │   ├── db.js
+│   │   ├── nodemailer.js
+│   │   └── cloudinary.js  
 │   │
-│   ├── controllers/          ← Business logic (29 files — one per feature area)
+│   ├── controllers/
 │   │   ├── authController.js
 │   │   ├── doctorController.js
 │   │   ├── appointmentController.js
@@ -178,7 +256,7 @@ MATRUCARE/
 │   │   ├── healthNavigationController.js
 │   │   └── emergencyController.js
 │   │
-│   ├── models/               ← Mongoose schemas / MongoDB collections (34 files)
+│   ├── models/    
 │   │   ├── User.js
 │   │   ├── Doctor.js
 │   │   ├── Appointment.js
@@ -214,31 +292,31 @@ MATRUCARE/
 │   │   ├── EmergencyContact.js
 │   │   └── EmergencyEvent.js
 │   │
-│   ├── routes/               ← Route definitions pointing to controllers (28 files)
+│   ├── routes/
 │   │   └── (one file per feature, named *Routes.js)
 │   │
-│   └── utils/                ← Shared helpers
-│       ├── roleMiddleware.js          ← protect() and authorize() for JWT + role checks
-│       ├── notificationScheduler.js   ← Daily 8AM cron: sends appointment reminders
-│       ├── reminderScheduler.js       ← Hourly cron: sends 24h advance booking notices
-│       └── healthJourneyGenerator.js  ← Generates step-by-step journeys by condition
+│   └── utils/             
+│       ├── roleMiddleware.js
+│       ├── notificationScheduler.js
+│       ├── reminderScheduler.js
+│       └── healthJourneyGenerator.js
 │
-└── FRONTEND/                 ← React 19 + Vite 7 single-page application
-    ├── .env                  ← Frontend environment variables (VITE_API_URL)
+└── FRONTEND/
+    ├── .env 
     ├── .gitignore
-    ├── netlify.toml          ← Netlify SPA redirect rule (serves index.html for all routes)
+    ├── netlify.toml  
     ├── vite.config.js
     ├── package.json
     ├── index.html
     │
     └── src/
-        ├── main.jsx          ← Entry point: renders App into the DOM
-        ├── App.jsx           ← All routes defined here + ProtectedRoute logic
-        ├── index.css         ← Tailwind base styles + global dark background
+        ├── main.jsx  
+        ├── App.jsx    
+        ├── index.css
         │
-        ├── Components/       ← 55 reusable components (see FRONTEND/README.md for full list)
-        │   ├── AuthContext.jsx       ← Global JWT auth state (user, token, login, logout)
-        │   ├── Navbar.jsx            ← Sticky nav with 3 dropdown menus
+        ├── Components/  
+        │   ├── AuthContext.jsx
+        │   ├── Navbar.jsx 
         │   ├── Login.jsx / Register.jsx
         │   ├── MotherDashboard.jsx / DoctorDashboard.jsx / AshaWorkerDashboard.jsx / Admin.jsx
         │   ├── HospitalBookingForm.jsx
@@ -257,80 +335,278 @@ MATRUCARE/
             ├── Chat.jsx / Forum.jsx / Reviews.jsx / Education.jsx
             ├── Analytics.jsx / Insights.jsx
             └── ... (10+ more)
-```
+</pre>
 
 ---
 
-## Tech Stack
+<hr>
 
-### Backend
-| Technology | Version | Why we use it |
-|-----------|---------|--------------|
-| Node.js | 18+ | JavaScript runtime for the server |
-| Express | 5.2.1 | HTTP server and routing framework |
-| MongoDB Atlas | Cloud | NoSQL database for all application data |
-| Mongoose | 9.2.3 | Schema definitions and database queries |
-| jsonwebtoken | 9.0.3 | Generates and verifies JWT auth tokens |
-| bcrypt | 6.0.0 | Hashing user passwords before storing |
-| nodemailer | 8.0.1 | Sends OTP, confirmation, and alert emails via Gmail |
-| cloudinary | 2.9.0 | Cloud storage for uploaded images and documents |
-| multer | 2.1.0 | Parses file uploads before sending to Cloudinary |
-| socket.io | 4.8.3 | WebSocket server for real-time chat and SOS |
-| node-cron | 4.2.1 | Schedules daily reminder emails and notifications |
-| google-translate-api-x | 10.7.2 | Auto-translates chat messages |
-| helmet | 8.1.0 | Adds security HTTP headers to every response |
-| cors | 2.8.6 | Allows only the frontend URL to call the API |
-| dotenv | 17.3.1 | Loads .env variables into process.env |
-| nodemon | 3.1.14 | Dev tool: auto-restarts server on file save |
+<h2 id="tech-stack" style="color:#0d6efd;">💻 Tech Stack</h2>
 
-### Frontend
-| Technology | Version | Why we use it |
-|-----------|---------|--------------|
-| React | 19.2.0 | Component-based UI framework |
-| Vite | 7.3.1 | Build tool with instant hot reload |
-| react-router-dom | 7.13.1 | Client-side routing and navigation |
-| tailwindcss | 4.2.1 | Utility CSS — used for all styling |
-| framer-motion | 12.34.4 | Animations (page enter, card hover effects) |
-| axios | 1.13.6 | HTTP client for calling the backend API |
-| lucide-react | 0.576.0 | Icon library (500+ icons) |
-| socket.io-client | 4.8.3 | WebSocket client for real-time chat and SOS |
-| react-qr-code | 2.0.18 | QR code generator for the Health Passport |
-| @jitsi/react-sdk | 1.4.4 | Embeds Jitsi Meet video calls in the browser |
-| i18next | 25.8.13 | Internationalization library |
-| react-i18next | 16.5.4 | React bindings for i18next |
+<h3 style="color:#6f42c1;">⚙️ Backend</h3>
 
----
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Technology</th>
+<th style="border:1px solid #ddd;padding:10px;">Version</th>
+<th style="border:1px solid #ddd;padding:10px;">Why we use it</th>
+</tr>
+</thead>
 
-## How to Run the Project Locally
+<tbody>
 
-You need to run two separate servers — one for the backend, one for the frontend.
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🟢 Node.js</td>
+<td style="border:1px solid #ddd;padding:10px;">18+</td>
+<td style="border:1px solid #ddd;padding:10px;">JavaScript runtime for the server</td>
+</tr>
 
-### Step 1 — Prerequisites
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🚏 Express</td>
+<td style="border:1px solid #ddd;padding:10px;">5.2.1</td>
+<td style="border:1px solid #ddd;padding:10px;">HTTP server and routing framework</td>
+</tr>
 
-Make sure these are installed on your machine:
-- **Node.js** version 18 or higher (download from nodejs.org)
-- **npm** (comes with Node.js)
-- A **MongoDB Atlas** account (free tier works fine)
-- A **Gmail** account with App Password enabled
-- A **Cloudinary** account (free tier works fine)
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🍃 MongoDB Atlas</td>
+<td style="border:1px solid #ddd;padding:10px;">Cloud</td>
+<td style="border:1px solid #ddd;padding:10px;">NoSQL database for all application data</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📦 Mongoose</td>
+<td style="border:1px solid #ddd;padding:10px;">9.2.3</td>
+<td style="border:1px solid #ddd;padding:10px;">Schema definitions and database queries</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔑 jsonwebtoken</td>
+<td style="border:1px solid #ddd;padding:10px;">9.0.3</td>
+<td style="border:1px solid #ddd;padding:10px;">Generates and verifies JWT auth tokens</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔒 bcrypt</td>
+<td style="border:1px solid #ddd;padding:10px;">6.0.0</td>
+<td style="border:1px solid #ddd;padding:10px;">Hashing user passwords before storing</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📧 nodemailer</td>
+<td style="border:1px solid #ddd;padding:10px;">8.0.1</td>
+<td style="border:1px solid #ddd;padding:10px;">Sends OTP, confirmation, and alert emails via Gmail</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">☁️ cloudinary</td>
+<td style="border:1px solid #ddd;padding:10px;">2.9.0</td>
+<td style="border:1px solid #ddd;padding:10px;">Cloud storage for uploaded images and documents</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📤 multer</td>
+<td style="border:1px solid #ddd;padding:10px;">2.1.0</td>
+<td style="border:1px solid #ddd;padding:10px;">Parses file uploads before sending to Cloudinary</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔌 socket.io</td>
+<td style="border:1px solid #ddd;padding:10px;">4.8.3</td>
+<td style="border:1px solid #ddd;padding:10px;">WebSocket server for real-time chat and SOS</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⏰ node-cron</td>
+<td style="border:1px solid #ddd;padding:10px;">4.2.1</td>
+<td style="border:1px solid #ddd;padding:10px;">Schedules daily reminder emails and notifications</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🌍 google-translate-api-x</td>
+<td style="border:1px solid #ddd;padding:10px;">10.7.2</td>
+<td style="border:1px solid #ddd;padding:10px;">Auto-translates chat messages</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🛡️ helmet</td>
+<td style="border:1px solid #ddd;padding:10px;">8.1.0</td>
+<td style="border:1px solid #ddd;padding:10px;">Adds security HTTP headers to every response</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔗 cors</td>
+<td style="border:1px solid #ddd;padding:10px;">2.8.6</td>
+<td style="border:1px solid #ddd;padding:10px;">Allows only the frontend URL to call the API</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⚙️ dotenv</td>
+<td style="border:1px solid #ddd;padding:10px;">17.3.1</td>
+<td style="border:1px solid #ddd;padding:10px;">Loads .env variables into process.env</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔄 nodemon</td>
+<td style="border:1px solid #ddd;padding:10px;">3.1.14</td>
+<td style="border:1px solid #ddd;padding:10px;">Dev tool: auto-restarts server on file save</td>
+</tr>
+
+</tbody>
+</table>
+
+<br>
+
+<h3 style="color:#6f42c1;">🎨 Frontend</h3>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Technology</th>
+<th style="border:1px solid #ddd;padding:10px;">Version</th>
+<th style="border:1px solid #ddd;padding:10px;">Why we use it</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⚛️ React</td>
+<td style="border:1px solid #ddd;padding:10px;">19.2.0</td>
+<td style="border:1px solid #ddd;padding:10px;">Component-based UI framework</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⚡ Vite</td>
+<td style="border:1px solid #ddd;padding:10px;">7.3.1</td>
+<td style="border:1px solid #ddd;padding:10px;">Build tool with instant hot reload</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🧭 react-router-dom</td>
+<td style="border:1px solid #ddd;padding:10px;">7.13.1</td>
+<td style="border:1px solid #ddd;padding:10px;">Client-side routing and navigation</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🎨 tailwindcss</td>
+<td style="border:1px solid #ddd;padding:10px;">4.2.1</td>
+<td style="border:1px solid #ddd;padding:10px;">Utility CSS — used for all styling</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🎞️ framer-motion</td>
+<td style="border:1px solid #ddd;padding:10px;">12.34.4</td>
+<td style="border:1px solid #ddd;padding:10px;">Animations (page enter, card hover effects)</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🌐 axios</td>
+<td style="border:1px solid #ddd;padding:10px;">1.13.6</td>
+<td style="border:1px solid #ddd;padding:10px;">HTTP client for calling the backend API</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🎯 lucide-react</td>
+<td style="border:1px solid #ddd;padding:10px;">0.576.0</td>
+<td style="border:1px solid #ddd;padding:10px;">Icon library (500+ icons)</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔌 socket.io-client</td>
+<td style="border:1px solid #ddd;padding:10px;">4.8.3</td>
+<td style="border:1px solid #ddd;padding:10px;">WebSocket client for real-time chat and SOS</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📷 react-qr-code</td>
+<td style="border:1px solid #ddd;padding:10px;">2.0.18</td>
+<td style="border:1px solid #ddd;padding:10px;">QR code generator for the Health Passport</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📹 @jitsi/react-sdk</td>
+<td style="border:1px solid #ddd;padding:10px;">1.4.4</td>
+<td style="border:1px solid #ddd;padding:10px;">Embeds Jitsi Meet video calls in the browser</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🌍 i18next</td>
+<td style="border:1px solid #ddd;padding:10px;">25.8.13</td>
+<td style="border:1px solid #ddd;padding:10px;">Internationalization library</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🌐 react-i18next</td>
+<td style="border:1px solid #ddd;padding:10px;">16.5.4</td>
+<td style="border:1px solid #ddd;padding:10px;">React bindings for i18next</td>
+</tr>
+
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="how-to-run-the-project-locally" style="color:#198754;">🚀 How to Run the Project Locally</h2>
+
+<p>You need to run two separate servers — one for the backend, one for the frontend.</p>
+
+<h3 style="color:#fd7e14;">🧰 Step 1 — Prerequisites</h3>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Requirement</th>
+<th style="border:1px solid #ddd;padding:10px;">Purpose</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🟢 Node.js (v18+)</td>
+<td style="border:1px solid #ddd;padding:10px;">JavaScript runtime to run backend and build frontend</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📦 npm</td>
+<td style="border:1px solid #ddd;padding:10px;">Package manager used to install dependencies</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🍃 MongoDB Atlas</td>
+<td style="border:1px solid #ddd;padding:10px;">Cloud database for storing application data</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📧 Gmail with App Password</td>
+<td style="border:1px solid #ddd;padding:10px;">Used by Nodemailer to send OTP and alerts</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">☁️ Cloudinary Account</td>
+<td style="border:1px solid #ddd;padding:10px;">Stores uploaded images and documents</td>
+</tr>
+
+</tbody>
+</table>
 
 ### Step 2 — Clone the repository
 
-```bash
+<code>
 git clone https://github.com/amangupta9454/maacare.git
 cd maacare
-```
+</code>
 
 ### Step 3 — Set up and start the Backend
-
-```bash
+<code>
 cd BACKEND
 npm install
-```
+</code>
 
 Create a `.env` file inside `BACKEND/` with the following contents (fill in real values):
 
-```env
+<code>
 MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/maacare
 PORT=5000
 JWT_SECRET=any_long_random_secret_string_here_32_chars_minimum
@@ -346,7 +622,7 @@ ADMIN_PASSWORD=SecureAdminPassword123
 ADMIN_NAME=Your Name
 YOUTUBE_API_KEY=your_youtube_data_api_v3_key
 GETFORM_ENDPOINT=https://getform.io/f/your_form_endpoint
-```
+</code>
 
 ```bash
 npm run dev
@@ -366,7 +642,10 @@ npm install
 Create a `.env` file inside `FRONTEND/` with:
 
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_GETFORM_ENDPOINT=your code
+VITE_API_URL=https:localhost:5000/api
+VITE_YOUTUBE_API_KEY=your youtube api key
+
 ```
 
 ```bash
@@ -384,213 +663,943 @@ npm run init-admin
 
 This uses `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and `ADMIN_NAME` from `.env` to create the Admin user in MongoDB.
 
-### Step 6 — Open the app
+### Step 6 - Open the app
 
 Go to **http://localhost:5173** in your browser. You can now register as a Mother, Doctor, ASHA Worker, or Hospital — or sign in with the Admin account you just created.
 
----
+<hr>
 
-## Environment Variables
 
-### Backend (`BACKEND/.env`)
+<h2 id="environment-variables" style="color:#0d6efd;">🔑 Environment Variables</h2>
 
-| Variable | Required | What it does | Where to get it |
-|----------|----------|-------------|-----------------|
-| `MONGO_URI` | Yes | MongoDB connection string | MongoDB Atlas → Connect → Connect your application |
-| `PORT` | No | Port the server runs on (default: 5000) | Set to any free port |
-| `JWT_SECRET` | Yes | Signs and verifies JWT tokens | Any random 32+ char string |
-| `EMAIL_USER` | Yes | Gmail address that sends emails | Your Gmail address |
-| `EMAIL_PASS` | Yes | Gmail App Password (not your login password) | myaccount.google.com/apppasswords |
-| `EMAIL_FROM` | Yes | "From" address shown in sent emails | Same as EMAIL_USER |
-| `CLOUDINARY_CLOUD_NAME` | Yes | Cloudinary account name | cloudinary.com → Dashboard |
-| `CLOUDINARY_API_KEY` | Yes | Cloudinary API key | cloudinary.com → Dashboard |
-| `CLOUDINARY_API_SECRET` | Yes | Cloudinary API secret | cloudinary.com → Dashboard |
-| `FRONTEND_URL` | Yes | Frontend URL for CORS whitelist | `http://localhost:5173` (dev) or Netlify URL (prod) |
-| `ADMIN_EMAIL` | Yes | Email for the admin account (used by initAdmin.js) | Choose your own |
-| `ADMIN_PASSWORD` | Yes | Password for the admin account | Choose a strong password |
-| `ADMIN_NAME` | Yes | Display name for admin | Choose your own |
-| `YOUTUBE_API_KEY` | Yes | Fetches videos for the Education page | console.developers.google.com |
-| `GETFORM_ENDPOINT` | Yes | Receives contact form submissions | getform.io |
+<h3 style="color:#6f42c1;">⚙️ Backend (<code>BACKEND/.env</code>)</h3>
 
-### Frontend (`FRONTEND/.env`)
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Variable</th>
+<th style="border:1px solid #ddd;padding:10px;">Required</th>
+<th style="border:1px solid #ddd;padding:10px;">What it does</th>
+<th style="border:1px solid #ddd;padding:10px;">Where to get it</th>
+</tr>
+</thead>
 
-| Variable | Required | What it does |
-|----------|----------|-------------|
-| `VITE_API_URL` | Yes | Base URL for all API calls. Must end with `/api`. Example: `http://localhost:5000/api` |
+<tbody>
 
----
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>MONGO_URI</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">MongoDB connection string</td>
+<td style="border:1px solid #ddd;padding:10px;">MongoDB Atlas → Connect → Connect your application</td>
+</tr>
 
-## All API Routes (Summary)
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>PORT</code></td>
+<td style="border:1px solid #ddd;padding:10px;">❌ No</td>
+<td style="border:1px solid #ddd;padding:10px;">Port the server runs on (default: 5000)</td>
+<td style="border:1px solid #ddd;padding:10px;">Set to any free port</td>
+</tr>
 
-Every route starts with `/api`. Full documentation is in `BACKEND/README.md`.
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>JWT_SECRET</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Signs and verifies JWT tokens</td>
+<td style="border:1px solid #ddd;padding:10px;">Any random 32+ character string</td>
+</tr>
 
-| Route prefix | What it handles |
-|-------------|----------------|
-| `/api/auth` | Register, login, OTP, password reset |
-| `/api/doctors` | Doctor profiles and search |
-| `/api/appointments` | Book and manage appointments |
-| `/api/pregnancy` | Pregnancy profile and tracking |
-| `/api/baby` | Baby profile and milestones |
-| `/api/baby-vaccines` | Vaccination schedules |
-| `/api/teleconsult` | Video consultation booking and rooms |
-| `/api/reviews` | Doctor reviews and ratings |
-| `/api/forum` | Community forum posts and comments |
-| `/api/diet` | Daily diet plans |
-| `/api/chat` | Real-time multilingual chat |
-| `/api/quiz` | Maternal health quiz |
-| `/api/feedback` | Platform feedback submission |
-| `/api/schemes` | Government welfare schemes |
-| `/api/analytics` | Admin platform statistics |
-| `/api/insights` | Detailed admin insights |
-| `/api/asha` | ASHA worker operations |
-| `/api/health-records` | Health record upload and view |
-| `/api/hospitals` | Hospital listing and registration |
-| `/api/hospital-bookings` | Service booking and approval |
-| `/api/mentors` | Mentor mothers program |
-| `/api/insurance` | Insurance policy management |
-| `/api/health-passport` | Digital health passport |
-| `/api/navigation` | Step-by-step health navigation |
-| `/api/emergency` | SOS alerts and emergency contacts |
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>EMAIL_USER</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Gmail address that sends emails</td>
+<td style="border:1px solid #ddd;padding:10px;">Your Gmail address</td>
+</tr>
 
----
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>EMAIL_PASS</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Gmail App Password (not your login password)</td>
+<td style="border:1px solid #ddd;padding:10px;">https://myaccount.google.com/apppasswords</td>
+</tr>
 
-## User Roles and Permissions
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>EMAIL_FROM</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">"From" address shown in sent emails</td>
+<td style="border:1px solid #ddd;padding:10px;">Same as EMAIL_USER</td>
+</tr>
 
-There are 5 roles in the system. The role is chosen at registration and is embedded in the JWT token.
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>CLOUDINARY_CLOUD_NAME</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Cloudinary account name</td>
+<td style="border:1px solid #ddd;padding:10px;">https://cloudinary.com → Dashboard</td>
+</tr>
 
-| Feature | Mother | Doctor | ASHA | Hospital | Admin |
-|---------|:------:|:------:|:----:|:--------:|:-----:|
-| Register / Login | Yes | Yes | Yes | Yes | (created via script) |
-| Health Dashboard | Yes | No | No | No | No |
-| Book Appointment | Yes | No | No | No | No |
-| Manage Insurance | Yes | Yes | Yes | No | No |
-| Health Passport | Yes | Yes | Yes | No | No |
-| Emergency SOS | Yes | Yes | Yes | No | No |
-| Book Hospital Service | Yes | No | No | No | No |
-| Doctor Panel | No | Yes | No | No | No |
-| Teleconsult | Yes | Yes | No | No | No |
-| ASHA Panel | No | No | Yes | No | No |
-| Hospital Dashboard | No | No | No | Yes | No |
-| Approve Bookings | No | No | No | Yes | No |
-| Admin Panel | No | No | No | No | Yes |
-| Platform Analytics | No | No | No | No | Yes |
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>CLOUDINARY_API_KEY</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Cloudinary API key</td>
+<td style="border:1px solid #ddd;padding:10px;">https://cloudinary.com → Dashboard</td>
+</tr>
 
----
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>CLOUDINARY_API_SECRET</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Cloudinary API secret</td>
+<td style="border:1px solid #ddd;padding:10px;">https://cloudinary.com → Dashboard</td>
+</tr>
 
-## How Each Major Feature Works
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>FRONTEND_URL</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Frontend URL for CORS whitelist</td>
+<td style="border:1px solid #ddd;padding:10px;"><code>http://localhost:5173</code> (dev) or Netlify URL (prod)</td>
+</tr>
 
-### Insurance at Booking
-When a user opens the Hospital Booking Form, the frontend loads all of their saved insurance policies from the backend and shows them in a dropdown. When a policy is selected, the estimated cost is calculated automatically. The selected policy ID and cost are saved with the booking record.
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>ADMIN_EMAIL</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Email for the admin account (used by initAdmin.js)</td>
+<td style="border:1px solid #ddd;padding:10px;">Choose your own</td>
+</tr>
 
-### Digital Health Passport + QR
-The user fills in their blood type, allergies, chronic conditions, doctor name and contact, and insurance provider. This is saved in MongoDB as a `HealthPassport` document. On the frontend, `react-qr-code` converts the passport data into a QR code image. Any first responder can scan this QR with a phone and instantly see the patient's critical medical data — without needing internet access to a database.
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>ADMIN_PASSWORD</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Password for the admin account</td>
+<td style="border:1px solid #ddd;padding:10px;">Choose a strong password</td>
+</tr>
 
-### Emergency SOS
-The user taps the SOS button. The browser asks for location permission via `navigator.geolocation`. The coordinates are sent to `POST /api/emergency/sos`. The backend saves an `EmergencyEvent` in MongoDB, pulls the user's saved emergency contacts, and sends an email via Nodemailer. The email includes a Google Maps link to the user's exact coordinates.
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>ADMIN_NAME</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Display name for admin</td>
+<td style="border:1px solid #ddd;padding:10px;">Choose your own</td>
+</tr>
 
-### Health Navigation Assistant
-The user types a condition (e.g., "anemia" or "gestational diabetes"). The frontend calls `GET /api/navigation/journey?condition=anemia`. The `healthJourneyGenerator.js` utility matches the condition and returns an ordered array of steps (visit ASHA worker, go for blood test, see gynecologist, etc.). Each step has a title, description, type, and icon.
 
-### Real-Time Chat
-Both sender and receiver connect to the backend Socket.IO server when they open the chat page. When A sends a message, the POST request saves it to MongoDB. The backend also calls `io.to(receiverSocketId).emit('receive_message', data)`. The receiver's browser receives this event and appends the message to their chat window instantly.
 
-### Teleconsultation
-The user books a session via the API. The backend creates a `TeleConsult` record with a unique `sessionId`. Both the mother and doctor navigate to `/teleconsult/room/:consultId`. The `TeleConsultRoom` component uses `@jitsi/react-sdk` to embed a Jitsi Meet room named `maacare_<sessionId>`. Both users join the same room and can video call directly in the browser.
+</tbody>
+</table>
 
----
+<br>
 
-## Deployment
+<h3 style="color:#6f42c1;">🎨 Frontend (<code>FRONTEND/.env</code>)</h3>
 
-### Frontend — Netlify
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Variable</th>
+<th style="border:1px solid #ddd;padding:10px;">Required</th>
+<th style="border:1px solid #ddd;padding:10px;">What it does</th>
+</tr>
+</thead>
 
-1. Push code to GitHub
-2. Go to netlify.com → New Site → Connect GitHub repo
-3. Set **Base directory** to `FRONTEND`
-4. Set **Build command** to `npm run build`
-5. Set **Publish directory** to `FRONTEND/dist`
-6. Add environment variable: `VITE_API_URL = https://your-backend.com/api`
-7. Deploy
+<tbody>
 
-The `netlify.toml` in the FRONTEND folder already handles SPA routing.
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>VITE_API_URL</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">
+Base URL for all API calls. Must end with <code>/api</code>.
+Example: <code>http://localhost:5000/api</code>
+</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>YOUTUBE_API_KEY</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Fetches videos for the Education page</td>
+<td style="border:1px solid #ddd;padding:10px;">https://console.developers.google.com</td>
+</tr>
 
-### Backend — Any Node.js host (Render, Railway, etc.)
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>GETFORM_ENDPOINT</code></td>
+<td style="border:1px solid #ddd;padding:10px;">✅ Yes</td>
+<td style="border:1px solid #ddd;padding:10px;">Receives contact form submissions</td>
+<td style="border:1px solid #ddd;padding:10px;">https://getform.io</td>
+</tr>
 
-1. Push code to GitHub
-2. Create a new Web Service on Render (or similar)
-3. Set root directory to `BACKEND`
-4. Set start command to `node index.js`
-5. Add all backend environment variables in the hosting dashboard
-6. After deploying, copy the backend URL and set it as `VITE_API_URL` in Netlify
+</tbody>
+</table>
 
----
+<hr>
+<h2 id="all-api-routes-summary" style="color:#0d6efd;">🌐 All API Routes (Summary)</h2>
 
-## Package Dependencies
+<p>Every route starts with <code>/api</code>. Full documentation is in <code>BACKEND/README.md</code>.</p>
 
-### Backend — Key packages
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Route Prefix</th>
+<th style="border:1px solid #ddd;padding:10px;">What it handles</th>
+</tr>
+</thead>
 
-| Package | Version |
-|---------|---------|
-| express | ^5.2.1 |
-| mongoose | ^9.2.3 |
-| bcrypt | ^6.0.0 |
-| jsonwebtoken | ^9.0.3 |
-| nodemailer | ^8.0.1 |
-| cloudinary | ^2.9.0 |
-| multer | ^2.1.0 |
-| socket.io | ^4.8.3 |
-| node-cron | ^4.2.1 |
-| google-translate-api-x | ^10.7.2 |
-| helmet | ^8.1.0 |
-| cors | ^2.8.6 |
-| dotenv | ^17.3.1 |
-| nodemon (dev) | ^3.1.14 |
+<tbody>
 
-### Frontend — Key packages
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/auth</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🔐 Register, login, OTP, password reset</td>
+</tr>
 
-| Package | Version |
-|---------|---------|
-| react | ^19.2.0 |
-| react-dom | ^19.2.0 |
-| react-router-dom | ^7.13.1 |
-| axios | ^1.13.6 |
-| tailwindcss | ^4.2.1 |
-| framer-motion | ^12.34.4 |
-| lucide-react | ^0.576.0 |
-| socket.io-client | ^4.8.3 |
-| react-qr-code | ^2.0.18 |
-| @jitsi/react-sdk | ^1.4.4 |
-| i18next | ^25.8.13 |
-| react-i18next | ^16.5.4 |
-| vite (dev) | ^7.3.1 |
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/doctors</code></td>
+<td style="border:1px solid #ddd;padding:10px;">👨‍⚕️ Doctor profiles and search</td>
+</tr>
 
----
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/appointments</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📅 Book and manage appointments</td>
+</tr>
 
-## Available Scripts
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/pregnancy</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🤰 Pregnancy profile and tracking</td>
+</tr>
 
-### Backend (`cd BACKEND`)
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/baby</code></td>
+<td style="border:1px solid #ddd;padding:10px;">👶 Baby profile and milestones</td>
+</tr>
 
-| Command | What it does |
-|---------|-------------|
-| `npm run dev` | Start with nodemon (auto-restarts on file changes) |
-| `npm start` | Start normally for production |
-| `npm run init-admin` | Create the first admin user from .env values |
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/baby-vaccines</code></td>
+<td style="border:1px solid #ddd;padding:10px;">💉 Vaccination schedules</td>
+</tr>
 
-### Frontend (`cd FRONTEND`)
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/teleconsult</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📹 Video consultation booking and rooms</td>
+</tr>
 
-| Command | What it does |
-|---------|-------------|
-| `npm run dev` | Start Vite dev server on http://localhost:5173 |
-| `npm run build` | Build for production (output goes to `dist/`) |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run ESLint to check for code issues |
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/reviews</code></td>
+<td style="border:1px solid #ddd;padding:10px;">⭐ Doctor reviews and ratings</td>
+</tr>
 
----
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/forum</code></td>
+<td style="border:1px solid #ddd;padding:10px;">💬 Community forum posts and comments</td>
+</tr>
 
-## Contact
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/diet</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🥗 Daily diet plans</td>
+</tr>
 
-**Aman Gupta** — Full-Stack Developer
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/chat</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🌍 Real-time multilingual chat</td>
+</tr>
 
-- Email: [ag0567688@gmail.com](mailto:ag0567688@gmail.com)
-- LinkedIn: [linkedin.com/in/amangupta9454](https://linkedin.com/in/amangupta9454)
-- GitHub: [github.com/amangupta9454](https://github.com/amangupta9454)
-- Portfolio: [gupta-aman-portfolio.netlify.app](http://gupta-aman-portfolio.netlify.app/)
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/quiz</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🧠 Maternal health quiz</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/feedback</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📝 Platform feedback submission</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/schemes</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🏛️ Government welfare schemes</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/analytics</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📊 Admin platform statistics</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/insights</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📈 Detailed admin insights</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/asha</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🧑‍⚕️ ASHA worker operations</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/health-records</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📂 Health record upload and view</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/hospitals</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🏥 Hospital listing and registration</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/hospital-bookings</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📋 Service booking and approval</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/mentors</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🤝 Mentor mothers program</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/insurance</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🛡️ Insurance policy management</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/health-passport</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📇 Digital health passport</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/navigation</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🧭 Step-by-step health navigation</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>/api/emergency</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🚨 SOS alerts and emergency contacts</td>
+</tr>
+
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="user-roles-and-permissions" style="color:#198754;">👥 User Roles and Permissions</h2>
+
+<p>There are <b>5 roles</b> in the system. The role is chosen at registration and is embedded in the JWT token.</p>
+
+<table style="border-collapse:collapse;width:100%;text-align:center;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Feature</th>
+<th style="border:1px solid #ddd;padding:10px;">🤱 Mother</th>
+<th style="border:1px solid #ddd;padding:10px;">👨‍⚕️ Doctor</th>
+<th style="border:1px solid #ddd;padding:10px;">🧑‍⚕️ ASHA</th>
+<th style="border:1px solid #ddd;padding:10px;">🏥 Hospital</th>
+<th style="border:1px solid #ddd;padding:10px;">🛠️ Admin</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Register / Login</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">(created via script)</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Health Dashboard</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Book Appointment</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Manage Insurance</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Health Passport</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Emergency SOS</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Book Hospital Service</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Doctor Panel</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Teleconsult</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">ASHA Panel</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Hospital Dashboard</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Approve Bookings</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Admin Panel</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">Platform Analytics</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">❌</td>
+<td style="border:1px solid #ddd;padding:10px;">✔️</td>
+</tr>
+
+</tbody>
+</table>
+<hr>
+
+<h2 id="how-each-major-feature-works" style="color:#0d6efd;">🧠 How Each Major Feature Works</h2>
+
+<h3 style="color:#6f42c1;">🛡️ Insurance at Booking</h3>
+<li>
+When a user opens the <b>Hospital Booking Form</b>, the frontend loads all of their saved insurance policies 
+from the backend and shows them in a dropdown. When a policy is selected, the estimated cost is calculated automatically. 
+The selected policy ID and cost are saved with the booking record.
+</li>
+
+<h3 style="color:#6f42c1;">📇 Digital Health Passport + QR</h3>
+<li>
+The user fills in their blood type, allergies, chronic conditions, doctor name and contact, and insurance provider. 
+This is saved in MongoDB as a <code>HealthPassport</code> document.
+</li>
+
+<p>
+On the frontend, <code>react-qr-code</code> converts the passport data into a QR code image. 
+Any first responder can scan this QR with a phone and instantly see the patient's critical medical data — 
+without needing internet access to a database.
+</p>
+
+<h3 style="color:#6f42c1;">🚨 Emergency SOS</h3>
+<li>
+The user taps the SOS button. The browser asks for location permission via <code>navigator.geolocation</code>. 
+The coordinates are sent to <code>POST /api/emergency/sos</code>.
+</li>
+
+<li>
+The backend saves an <code>EmergencyEvent</code> in MongoDB, pulls the user's saved emergency contacts, 
+and sends an email via Nodemailer. The email includes a Google Maps link to the user's exact coordinates.
+</li>
+
+<h3 style="color:#6f42c1;">🧭 Health Navigation Assistant</h3>
+<li>
+The user types a condition (e.g., <b>anemia</b> or <b>gestational diabetes</b>). 
+The frontend calls <code>GET /api/navigation/journey?condition=anemia</code>.
+</li>
+
+<li>
+The <code>healthJourneyGenerator.js</code> utility matches the condition and returns an ordered array of steps 
+(visit ASHA worker, go for blood test, see gynecologist, etc.). Each step has a title, description, type, and icon.
+</li>
+
+<h3 style="color:#6f42c1;">💬 Real-Time Chat</h3>
+<li>
+Both sender and receiver connect to the backend <b>Socket.IO</b> server when they open the chat page. 
+When A sends a message, the POST request saves it to MongoDB.
+</li>
+
+<li>
+The backend also calls 
+<code>io.to(receiverSocketId).emit('receive_message', data)</code>.
+The receiver's browser receives this event and appends the message to their chat window instantly.
+</li>
+
+<h3 style="color:#6f42c1;">📹 Teleconsultation</h3>
+<li>
+The user books a session via the API. The backend creates a <code>TeleConsult</code> record with a unique 
+<code>sessionId</code>.
+</li>
+
+<li>
+Both the mother and doctor navigate to 
+<code>/teleconsult/room/:consultId</code>.
+</li>
+
+<li>
+The <code>TeleConsultRoom</code> component uses <code>@jitsi/react-sdk</code> to embed a 
+<b>Jitsi Meet</b> room named <code>maacare_&lt;sessionId&gt;</code>. 
+Both users join the same room and can video call directly in the browser.
+</li>
+
+<hr>
+
+<h2 id="deployment" style="color:#198754;">🚀 Deployment</h2>
+
+<h3 style="color:#fd7e14;">🌐 Frontend — Netlify</h3>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Step</th>
+<th style="border:1px solid #ddd;padding:10px;">Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">1</td>
+<td style="border:1px solid #ddd;padding:10px;">Push code to GitHub</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">2</td>
+<td style="border:1px solid #ddd;padding:10px;">Go to netlify.com → New Site → Connect GitHub repo</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">3</td>
+<td style="border:1px solid #ddd;padding:10px;">Set <b>Base directory</b> to <code>FRONTEND</code></td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">4</td>
+<td style="border:1px solid #ddd;padding:10px;">Set <b>Build command</b> to <code>npm run build</code></td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">5</td>
+<td style="border:1px solid #ddd;padding:10px;">Set <b>Publish directory</b> to <code>FRONTEND/dist</code></td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">6</td>
+<td style="border:1px solid #ddd;padding:10px;">Add environment variable: <code>VITE_API_URL = https://your-backend.com/api</code>
+<code>VITE_GETFORM_ENDPOINT</code> , <code>VITE_YOUTUBE_API_KEY</code></td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">7</td>
+<td style="border:1px solid #ddd;padding:10px;">Deploy</td>
+</tr>
+
+</tbody>
+</table>
+
+<p>
+The <code>netlify.toml</code> in the <b>FRONTEND</b> folder already handles SPA routing.
+</p>
+
+<h3 style="color:#fd7e14;">🖥️ Backend — Any Node.js Host (Render, Railway, etc.)</h3>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Step</th>
+<th style="border:1px solid #ddd;padding:10px;">Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">1</td>
+<td style="border:1px solid #ddd;padding:10px;">Push code to GitHub</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">2</td>
+<td style="border:1px solid #ddd;padding:10px;">Create a new Web Service on Render (or similar)</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">3</td>
+<td style="border:1px solid #ddd;padding:10px;">Set root directory to <code>BACKEND</code></td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">4</td>
+<td style="border:1px solid #ddd;padding:10px;">Set start command to <code>node index.js</code></td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">5</td>
+<td style="border:1px solid #ddd;padding:10px;">Add all backend environment variables in the hosting dashboard</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">6</td>
+<td style="border:1px solid #ddd;padding:10px;">After deploying, copy the backend URL and set it as <code>VITE_API_URL</code> in Netlify</td>
+</tr>
+
+</tbody>
+</table>
+<hr>
+
+<h2 id="package-dependencies" style="color:#0d6efd;">📦 Package Dependencies</h2>
+
+<h3 style="color:#6f42c1;">⚙️ Backend — Key Packages</h3>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Package</th>
+<th style="border:1px solid #ddd;padding:10px;">Version</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🚏 express</td>
+<td style="border:1px solid #ddd;padding:10px;">^5.2.1</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🍃 mongoose</td>
+<td style="border:1px solid #ddd;padding:10px;">^9.2.3</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔒 bcrypt</td>
+<td style="border:1px solid #ddd;padding:10px;">^6.0.0</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔑 jsonwebtoken</td>
+<td style="border:1px solid #ddd;padding:10px;">^9.0.3</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📧 nodemailer</td>
+<td style="border:1px solid #ddd;padding:10px;">^8.0.1</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">☁️ cloudinary</td>
+<td style="border:1px solid #ddd;padding:10px;">^2.9.0</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📤 multer</td>
+<td style="border:1px solid #ddd;padding:10px;">^2.1.0</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔌 socket.io</td>
+<td style="border:1px solid #ddd;padding:10px;">^4.8.3</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⏰ node-cron</td>
+<td style="border:1px solid #ddd;padding:10px;">^4.2.1</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🌍 google-translate-api-x</td>
+<td style="border:1px solid #ddd;padding:10px;">^10.7.2</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🛡️ helmet</td>
+<td style="border:1px solid #ddd;padding:10px;">^8.1.0</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔗 cors</td>
+<td style="border:1px solid #ddd;padding:10px;">^2.8.6</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⚙️ dotenv</td>
+<td style="border:1px solid #ddd;padding:10px;">^17.3.1</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔄 nodemon (dev)</td>
+<td style="border:1px solid #ddd;padding:10px;">^3.1.14</td>
+</tr>
+
+</tbody>
+</table>
+
+<br>
+
+<h3 style="color:#6f42c1;">🎨 Frontend — Key Packages</h3>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Package</th>
+<th style="border:1px solid #ddd;padding:10px;">Version</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⚛️ react</td>
+<td style="border:1px solid #ddd;padding:10px;">^19.2.0</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⚛️ react-dom</td>
+<td style="border:1px solid #ddd;padding:10px;">^19.2.0</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🧭 react-router-dom</td>
+<td style="border:1px solid #ddd;padding:10px;">^7.13.1</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🌐 axios</td>
+<td style="border:1px solid #ddd;padding:10px;">^1.13.6</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🎨 tailwindcss</td>
+<td style="border:1px solid #ddd;padding:10px;">^4.2.1</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🎞️ framer-motion</td>
+<td style="border:1px solid #ddd;padding:10px;">^12.34.4</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🎯 lucide-react</td>
+<td style="border:1px solid #ddd;padding:10px;">^0.576.0</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🔌 socket.io-client</td>
+<td style="border:1px solid #ddd;padding:10px;">^4.8.3</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📷 react-qr-code</td>
+<td style="border:1px solid #ddd;padding:10px;">^2.0.18</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">📹 @jitsi/react-sdk</td>
+<td style="border:1px solid #ddd;padding:10px;">^1.4.4</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🌍 i18next</td>
+<td style="border:1px solid #ddd;padding:10px;">^25.8.13</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">🌐 react-i18next</td>
+<td style="border:1px solid #ddd;padding:10px;">^16.5.4</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;">⚡ vite (dev)</td>
+<td style="border:1px solid #ddd;padding:10px;">^7.3.1</td>
+</tr>
+
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="available-scripts" style="color:#198754;">📜 Available Scripts</h2>
+
+<h3 style="color:#fd7e14;">🖥️ Backend (<code>cd BACKEND</code>)</h3>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Command</th>
+<th style="border:1px solid #ddd;padding:10px;">What it does</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>npm run dev</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🔄 Start with nodemon (auto-restarts on file changes)</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>npm start</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🚀 Start normally for production</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>npm run init-admin</code></td>
+<td style="border:1px solid #ddd;padding:10px;">👑 Create the first admin user from <code>.env</code> values</td>
+</tr>
+
+</tbody>
+</table>
+
+<br>
+
+<h3 style="color:#fd7e14;">🌐 Frontend (<code>cd FRONTEND</code>)</h3>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<thead>
+<tr style="background:#f8f9fa;">
+<th style="border:1px solid #ddd;padding:10px;">Command</th>
+<th style="border:1px solid #ddd;padding:10px;">What it does</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>npm run dev</code></td>
+<td style="border:1px solid #ddd;padding:10px;">⚡ Start Vite dev server on <code>http://localhost:5173</code></td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>npm run build</code></td>
+<td style="border:1px solid #ddd;padding:10px;">📦 Build for production (output goes to <code>dist/</code>)</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>npm run preview</code></td>
+<td style="border:1px solid #ddd;padding:10px;">👀 Preview the production build locally</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px;"><code>npm run lint</code></td>
+<td style="border:1px solid #ddd;padding:10px;">🧹 Run ESLint to check for code issues</td>
+</tr>
+
+</tbody>
+</table>
+<hr>
+
+<h2 id="contact" style="color:#0d6efd;">📬 Contact</h2>
+
+<div style="border:1px solid #d0d7de;padding:25px;border-radius:12px;background-color:#f6f8fa;max-width:750px;">
+
+<h3 style="margin-top:0;color:#6f42c1;">👨‍💻 Aman Gupta</h3>
+
+<p style="font-size:15px;">
+<b>Full-Stack Developer</b> | MERN Stack | AI-Powered Web Applications
+</p>
+
+<p>
+Passionate about building scalable full-stack platforms and AI-powered applications that solve real-world problems.
+Creator of <b>MaaCare</b>, a maternal healthcare platform connecting mothers, doctors, hospitals, and ASHA workers through technology.
+</p>
+
+<br>
+
+<h4 style="color:#198754;">🌐 Connect With Me</h4>
+
+<table style="border-collapse:collapse;width:100%;text-align:left;">
+<tbody>
+
+<tr>
+<td style="padding:8px;font-weight:bold;">📧 Email</td>
+<td style="padding:8px;">
+<a href="mailto:ag0567688@gmail.com">ag0567688@gmail.com</a>
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px;font-weight:bold;">💼 LinkedIn</td>
+<td style="padding:8px;">
+<a href="https://linkedin.com/in/amangupta9454">linkedin.com/in/amangupta9454</a>
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px;font-weight:bold;">🐙 GitHub</td>
+<td style="padding:8px;">
+<a href="https://github.com/amangupta9454">github.com/amangupta9454</a>
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px;font-weight:bold;">🌐 Portfolio</td>
+<td style="padding:8px;">
+<a href="http://gupta-aman-portfolio.netlify.app/">gupta-aman-portfolio.netlify.app</a>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+<br>
+
+<h4 style="color:#fd7e14;">🚀 Open For</h4>
+
+<ul>
+<li>💡 Innovative healthcare and AI projects</li>
+<li>🤝 Open-source collaborations</li>
+<li>🧑‍💻 Full-stack development opportunities</li>
+<li>📊 Hackathons and technical competitions</li>
+</ul>
+
+<p style="margin-top:15px;">
+If you have questions, collaboration ideas, or feedback about <b>MaaCare</b>, feel free to reach out.
+Let's build impactful technology together! 🚀
+</p>
+
+</div>
