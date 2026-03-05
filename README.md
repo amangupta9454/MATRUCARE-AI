@@ -40,6 +40,10 @@ The platform brings together multiple stakeholders — pregnant mothers, special
 ASHA (Accredited Social Health Activist) workers, hospitals, and administrators — into one connected system.
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amangupta9454/maacare/main/assets/system_architecture.png" alt="System Architecture Diagram" width="100%">
+</p>
+
 <p><b>A mother can use MaaCare to:</b></p>
 
 <ul>
@@ -57,6 +61,10 @@ ASHA (Accredited Social Health Activist) workers, hospitals, and administrators 
 <hr>
 
 <h2 id="who-its-for" style="color:#fd7e14;">👥 Who It's For</h2>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amangupta9454/maacare/main/assets/role_matrix.png" alt="Role Matrix Mapping" width="100%">
+</p>
 
 <table style="border-collapse: collapse; width:100%; text-align:left;">
 <thead>
@@ -1117,6 +1125,11 @@ Example: <code>http://localhost:5000/api</code>
 
 <h2 id="how-each-major-feature-works" style="color:#0d6efd;">🧠 How Each Major Feature Works</h2>
 
+<h3 style="color:#6f42c1;">🏥 Hospital Booking Flow</h3>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amangupta9454/maacare/main/assets/hospital_booking_flow.png" alt="Hospital Booking Flow Diagram" width="100%">
+</p>
+
 <h3 style="color:#6f42c1;">🛡️ Insurance at Booking</h3>
 <li>
 When a user opens the <b>Hospital Booking Form</b>, the frontend loads all of their saved insurance policies 
@@ -1125,6 +1138,11 @@ The selected policy ID and cost are saved with the booking record.
 </li>
 
 <h3 style="color:#6f42c1;">📇 Digital Health Passport + QR</h3>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amangupta9454/maacare/main/assets/health_passport_qr.png" alt="Digital Health Passport generation" width="100%">
+</p>
+
 <li>
 The user fills in their blood type, allergies, chronic conditions, doctor name and contact, and insurance provider. 
 This is saved in MongoDB as a <code>HealthPassport</code> document.
@@ -1137,6 +1155,11 @@ without needing internet access to a database.
 </p>
 
 <h3 style="color:#6f42c1;">🚨 Emergency SOS</h3>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/amangupta9454/maacare/main/assets/sos_flow.png" alt="Emergency SOS Activation Flow" width="100%">
+</p>
+
 <li>
 The user taps the SOS button. The browser asks for location permission via <code>navigator.geolocation</code>. 
 The coordinates are sent to <code>POST /api/emergency/sos</code>.
